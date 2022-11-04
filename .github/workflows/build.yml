@@ -26,7 +26,7 @@ jobs:
     - name: Install Sonar global tool
       run: dotnet tool install --global dotnet-sonarscanner
     - name: Begin Sonar scan
-      run: dotnet sonarscanner begin /k:"Uniandes-MISO_WebApiFramework" /o:"uniandes-miso" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+      run: dotnet sonarscanner begin /k:"Uniandes-MISO_WebApi-Framework" /o:"uniandes-miso" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
