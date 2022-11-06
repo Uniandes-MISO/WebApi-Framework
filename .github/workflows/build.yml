@@ -45,7 +45,7 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin  /k:"Uniandes-MISO_WebApi-Framework" /o:"uniandes-miso" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.coverage.exclusions="**Tests*.cs" /v:"${{ github.run_number }}"
           dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
           dotnet build
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"}
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
           
           
  
