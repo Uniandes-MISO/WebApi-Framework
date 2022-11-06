@@ -24,7 +24,7 @@ namespace Redbridge.WebApi.Handlers
                 if (response.RequestMessage.Headers.AcceptEncoding != null && response.RequestMessage.Headers.AcceptEncoding.Any())
                 {
                     // IIS only supports gzip at the moment so this avoids the Safari issue of the 'Br' compression type.
-                    var encodingType = response.RequestMessage.Headers.AcceptEncoding.FirstOrDefault(s => s.Value == "gzip" || s.Value == "deflate").Value;
+                    var encodingType = response.RequestMessage.Headers.AcceptEncoding.FirstOrDefault(s => s?.Value == "gzip" || s?.Value == "deflate").Value;
                     if (encodingType != null)
                         response.Content = new CompressedContent(response.Content, encodingType);
                 }
