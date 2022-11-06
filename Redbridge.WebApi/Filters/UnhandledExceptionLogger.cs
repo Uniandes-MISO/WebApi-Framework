@@ -18,10 +18,8 @@ namespace Redbridge.WebApi.Filters
         public Task LogAsync(ExceptionLoggerContext context, CancellationToken cancellationToken)
         {
             _logger.WriteInfo("Logging (only) unhandled exceptions...");
-
             if (context.Exception != null)
                 _logger.WriteException(context.Exception);
-
             return Task.CompletedTask;
         }
     }
