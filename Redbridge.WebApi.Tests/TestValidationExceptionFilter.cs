@@ -43,6 +43,7 @@ namespace Redbridge.WebApi.Tests
             try
             {
                 httpActionContext.Response.ThrowResponseException().WaitAndUnwrapException();
+                Assert.IsNotNull(httpActionContext.Response);
             }
             catch (ValidationException ve)
             {
