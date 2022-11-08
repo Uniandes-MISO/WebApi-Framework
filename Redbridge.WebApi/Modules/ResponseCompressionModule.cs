@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.IO.Compression;
 using System.Linq;
+using System.Reactive.Disposables;
 using System.Web;
 
 namespace Redbridge.WebApi.Modules
@@ -13,7 +14,10 @@ namespace Redbridge.WebApi.Modules
         private const string Deflate = "deflate";
         private const string GZip = "gzip";
 
-        public void Dispose() { }
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
 
         public void Init(HttpApplication app)
         {
