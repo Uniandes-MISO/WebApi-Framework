@@ -8,7 +8,7 @@ namespace Redbridge.WebApi.Filters
 {
     public class UserNotAuthenticatedExceptionFilter : ExceptionFilterAttribute
     {
-        readonly ILogger _logger;
+        private readonly ILogger _logger;
 
         public UserNotAuthenticatedExceptionFilter(ILogger logger)
         {
@@ -19,10 +19,7 @@ namespace Redbridge.WebApi.Filters
         public override void OnException(HttpActionExecutedContext actionExecutedContext)
         {
             _logger.WriteInfo("Checking exception for user not authenticated exception filtering....");
-
-            var exception = actionExecutedContext.Exception as UserNotAuthenticatedException;
-
-            if (exception != null)
+            if (actionExecutedContext.Exception is UserNotAuthenticatedException)
             {
                 _logger.WriteDebug("Processing user not authenticated exception filtering....");
                 var responseMessage = new HttpResponseMessage(HttpStatusCode.Unauthorized);

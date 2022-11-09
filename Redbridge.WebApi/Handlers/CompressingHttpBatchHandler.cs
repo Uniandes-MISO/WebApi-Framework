@@ -13,7 +13,9 @@ namespace Redbridge.WebApi.Handlers
 {
     public class CompressingHttpBatchHandler : DefaultHttpBatchHandler
     {
-        public CompressingHttpBatchHandler(HttpServer httpServer) : base(httpServer) { }
+        public CompressingHttpBatchHandler(HttpServer httpServer) : base(httpServer)
+        {
+        }
 
         public override Task<HttpResponseMessage> ProcessBatchAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
@@ -25,7 +27,7 @@ namespace Redbridge.WebApi.Handlers
                 {
                     // IIS only supports gzip at the moment so this avoids the Safari issue of the 'Br' compression type.
                     var encodingType = response.RequestMessage.Headers.AcceptEncoding.FirstOrDefault(
-                        s => s.Value == "gzip" || s.Value == "deflate"
+                        s => s?.Value == "gzip" || s?.Value == "deflate"
                         ).Value;
                     if (encodingType != null)
                         response.Content = new CompressedContent(response.Content, encodingType);
@@ -77,6 +79,7 @@ namespace Redbridge.WebApi.Handlers
                     case "gzip":
                         compressedStream = new GZipStream(stream, CompressionMode.Compress, leaveOpen: true);
                         break;
+
                     case "deflate":
                         compressedStream = new DeflateStream(stream, CompressionMode.Compress, leaveOpen: true);
                         break;

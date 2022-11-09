@@ -3,18 +3,18 @@ using Microsoft.Extensions.Logging;
 
 namespace Redbridge.WebApiCore.Filters
 {
-    public class LoggingExceptionFilter : ExceptionFilterAttribute
+    public class LoggingExceptionFilterAttribute : ExceptionFilterAttribute
     {
         private readonly ILogger _logger;
 
-        public LoggingExceptionFilter(ILogger<LoggingExceptionFilter> logger)
+        public LoggingExceptionFilterAttribute(ILogger<LoggingExceptionFilterAttribute> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
-        
-        public override void OnException(ExceptionContext actionExecutedContext)
+
+        public override void OnException(ExceptionContext context)
         {
-            _logger.LogError(actionExecutedContext.Exception, actionExecutedContext.Exception.Message);
+            _logger.LogError(context.Exception, context.Exception.Message);
         }
     }
 }
