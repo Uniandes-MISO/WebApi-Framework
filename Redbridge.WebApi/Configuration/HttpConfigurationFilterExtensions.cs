@@ -16,10 +16,10 @@ namespace Redbridge.WebApi.Configuration
 
             logger.WriteDebug("Installing exception filters...");
             configuration.Filters.Add(new ValidationExceptionFilter(logger));
-            configuration.Filters.Add(new UnknownEntityExceptionFilter(logger));
+            configuration.Filters.Add(new UnknownEntityExceptionFilterAttribute(logger));
             configuration.Filters.Add(new UserNotAuthenticatedExceptionFilter(logger));
             configuration.Filters.Add(new UserNotAuthorizedExceptionFilter(logger));
-            configuration.Filters.Add(new LoggingExceptionFilter(logger));
+            configuration.Filters.Add(new LoggingExceptionFilterAttribute(logger));
             configuration.MessageHandlers.Add(new NotFoundCustomMessageHandler());
 
             logger.WriteDebug("Installing exception logger...");

@@ -5,11 +5,11 @@ using Redbridge.Data;
 
 namespace Redbridge.WebApiCore.Filters
 {
-    public class UnknownEntityExceptionFilter : ExceptionFilterAttribute
+    public class UnknownEntityExceptionFilterAttribute : ExceptionFilterAttribute
     {
         private readonly ILogger _logger;
 
-        public UnknownEntityExceptionFilter(ILogger<UnknownEntityExceptionFilter> logger)
+        public UnknownEntityExceptionFilterAttribute(ILogger<UnknownEntityExceptionFilterAttribute> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }

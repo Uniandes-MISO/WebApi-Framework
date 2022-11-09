@@ -8,11 +8,11 @@ using Redbridge.Diagnostics;
 
 namespace Redbridge.WebApi.Filters
 {
-    public class UnknownEntityExceptionFilter : ExceptionFilterAttribute
+    public class UnknownEntityExceptionFilterAttribute : ExceptionFilterAttribute
     {
         private readonly ILogger _logger;
 
-        public UnknownEntityExceptionFilter(ILogger logger)
+        public UnknownEntityExceptionFilterAttribute(ILogger logger)
         {
             if (logger == null) throw new ArgumentNullException(nameof(logger));
             _logger = logger;

@@ -3,11 +3,11 @@ using Microsoft.Extensions.Logging;
 
 namespace Redbridge.WebApiCore.Filters
 {
-    public class LoggingExceptionFilter : ExceptionFilterAttribute
+    public class LoggingExceptionFilterAttribute : ExceptionFilterAttribute
     {
         private readonly ILogger _logger;
 
-        public LoggingExceptionFilter(ILogger<LoggingExceptionFilter> logger)
+        public LoggingExceptionFilterAttribute(ILogger<LoggingExceptionFilterAttribute> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
