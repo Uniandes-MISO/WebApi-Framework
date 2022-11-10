@@ -13,7 +13,10 @@ namespace Redbridge.WebApi.Modules
         private const string Deflate = "deflate";
         private const string GZip = "gzip";
 
-        public void Dispose() { }
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
 
         public void Init(HttpApplication app)
         {
