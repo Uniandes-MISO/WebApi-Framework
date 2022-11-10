@@ -18,9 +18,9 @@ namespace Redbridge.WebApi.Modules
             throw new NotImplementedException();
         }
 
-        public void Init(HttpApplication app)
+        public void Init(HttpApplication context)
         {
-            app.PreRequestHandlerExecute += Compress;
+            context.PreRequestHandlerExecute += Compress;
         }
 
         private void Compress(object sender, EventArgs e)

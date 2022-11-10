@@ -21,7 +21,11 @@ namespace Redbridge.WebApi.Tests
         {
             var logger = new Mock<ILogger>();
             var filter = new ValidationExceptionFilterAttribute(logger.Object);
-            filter.OnException(new HttpActionExecutedContext() { });
+            var context = new HttpActionExecutedContext() { };
+            filter.OnException(context);
+            context.Exception = new ValidationResultsException("Test", new ValidationResultCollection());
+            context.Exception = new ValidationException("Test");
+            Assert.IsNotNull(context);
         }
 
         [Test()]

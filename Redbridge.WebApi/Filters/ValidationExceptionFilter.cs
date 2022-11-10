@@ -30,7 +30,7 @@ namespace Redbridge.WebApi.Filters
             ValidationResult[] results;
             var validationResultsException = actionExecutedContext.Exception as ValidationResultsException;
             var validationException = actionExecutedContext.Exception as ValidationException;
-            string reasonPhrase;
+            string reasonPhrase = "";
 
             if (validationResultsException != null)
             {
