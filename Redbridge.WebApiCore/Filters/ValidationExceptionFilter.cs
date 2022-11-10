@@ -8,11 +8,11 @@ using Redbridge.Validation;
 
 namespace Redbridge.WebApiCore.Filters
 {
-    public class ValidationExceptionFilter : ExceptionFilterAttribute
+    public class ValidationExceptionFilterAttribute : ExceptionFilterAttribute
     {
         readonly ILogger _logger;
 
-        public ValidationExceptionFilter(ILogger<ValidationExceptionFilter> logger)
+        public ValidationExceptionFilterAttribute(ILogger<ValidationExceptionFilterAttribute> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
