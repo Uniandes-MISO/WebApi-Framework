@@ -14,13 +14,13 @@ namespace Redbridge.WebApiCore.Filters
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public override void OnException(ExceptionContext actionExecutedContext)
+        public override void OnException(ExceptionContext context)
         {
-            if (actionExecutedContext.Exception is UnknownEntityException unknownEntityException)
+            if (context.Exception is UnknownEntityException unknownEntityException)
             {
                 _logger.LogInformation($"Unknown entity exception processing with message {unknownEntityException.Message}");
-                var errorMessageError = new { error = unknownEntityException.Message};
-                actionExecutedContext.Result = new JsonResult(errorMessageError) { StatusCode = 422 };
+                var errorMessageError = new { error = unknownEntityException.Message };
+                context.Result = new JsonResult(errorMessageError) { StatusCode = 422 };
             }
         }
     }
