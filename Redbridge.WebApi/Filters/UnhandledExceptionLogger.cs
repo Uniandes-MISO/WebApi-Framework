@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.ExceptionHandling;
+using System.Web.Http.Filters;
 using Redbridge.Diagnostics;
 
 namespace Redbridge.WebApi.Filters
@@ -23,6 +24,11 @@ namespace Redbridge.WebApi.Filters
                 _logger.WriteException(context.Exception);
 
             return Task.CompletedTask;
+        }
+
+        public void OnException(HttpActionExecutedContext context)
+        {
+            throw new NotImplementedException();
         }
     }
 }
