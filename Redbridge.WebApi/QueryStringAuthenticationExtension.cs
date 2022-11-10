@@ -9,22 +9,17 @@ namespace Redbridge.WebApi
     {
         public static void UseQueryStringAuthentication(this IAppBuilder app)
         {
-            app.Use(async (context, next) =>
+            app.Use(async (owinContext, next) =>
             {
-                if (context.Request.QueryString.HasValue)
+                if (owinContext.Request.QueryString.HasValue && string.IsNullOrWhiteSpace(owinContext.Request.Headers.Get(HeaderNames.Authorization)))
                 {
-                    if (string.IsNullOrWhiteSpace(context.Request.Headers.Get(HeaderNames.Authorization)))
+                    var queryString = HttpUtility.ParseQueryString(owinContext.Request.QueryString.Value);
+                    if (queryString.ContainsKey(QueryStringParts.Authentication))
                     {
-                        var queryString = HttpUtility.ParseQueryString(context.Request.QueryString.Value);
-                        if (queryString.ContainsKey(QueryStringParts.Authentication))
+                        var token = queryString[QueryStringParts.Authentication];
+                        if (!string.IsNullOrWhiteSpace(token))
                         {
-                            var token = queryString[QueryStringParts.Authentication];
-
-                            if (!string.IsNullOrWhiteSpace(token))
-                            {
-                                context.Request.Headers.Add(HeaderNames.Authorization,
-                                    new[] { BearerTokenFormatter.CreateToken(token) });
-                            }
+                            owinContext.Request.Headers.Add(HeaderNames.Authorization, new[] { BearerTokenFormatter.CreateToken(token) });
                         }
                     }
                 }

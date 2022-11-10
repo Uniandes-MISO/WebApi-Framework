@@ -11,10 +11,10 @@ namespace Redbridge.WebApiCore.Filters
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
-        
-        public override void OnException(ExceptionContext actionExecutedContext)
+
+        public override void OnException(ExceptionContext context)
         {
-            _logger.LogError(actionExecutedContext.Exception, actionExecutedContext.Exception.Message);
+            _logger.LogError(context.Exception, context.Exception.Message);
         }
     }
 }

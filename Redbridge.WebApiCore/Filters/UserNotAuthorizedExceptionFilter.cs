@@ -8,21 +8,21 @@ namespace Redbridge.WebApiCore.Filters
 {
     public class UserNotAuthorizedExceptionFilter : ExceptionFilterAttribute
     {
-        readonly ILogger _logger;
+        private readonly ILogger _logger;
 
         public UserNotAuthorizedExceptionFilter(ILogger<UserNotAuthorizedExceptionFilter> logger)
         {
             _logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
         }
 
-        public override void OnException(ExceptionContext actionExecutedContext)
+        public override void OnException(ExceptionContext context)
         {
             _logger.LogInformation("Checking exception for user not authorized exception filtering....");
 
-            if (actionExecutedContext.Exception is UserNotAuthorizedException exception)
+            if (context.Exception is UserNotAuthorizedException exception)
             {
-                actionExecutedContext.ExceptionHandled = true;
-                actionExecutedContext.Result = new JsonResult(null) { StatusCode = 403 };
+                context.ExceptionHandled = true;
+                context.Result = new JsonResult(null) { StatusCode = 403 };
             }
         }
     }

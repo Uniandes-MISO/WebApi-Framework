@@ -7,20 +7,20 @@ namespace Redbridge.WebApiCore.Filters
 {
     public class UserNotAuthenticatedExceptionFilter : ExceptionFilterAttribute
     {
-        readonly ILogger _logger;
+        private readonly ILogger _logger;
 
         public UserNotAuthenticatedExceptionFilter(ILogger<UserNotAuthenticatedExceptionFilter> logger)
         {
             _logger = logger ?? throw new System.ArgumentNullException(nameof(logger));
         }
 
-        public override void OnException(ExceptionContext actionExecutedContext)
+        public override void OnException(ExceptionContext context)
         {
-            if (actionExecutedContext.Exception is UserNotAuthenticatedException exception)
+            if (context.Exception is UserNotAuthenticatedException exception)
             {
                 _logger.LogDebug("Processing user not authenticated exception filtering.");
-                actionExecutedContext.Result = new UnauthorizedResult();
-                actionExecutedContext.ExceptionHandled = true;
+                context.Result = new UnauthorizedResult();
+                context.ExceptionHandled = true;
             }
         }
     }

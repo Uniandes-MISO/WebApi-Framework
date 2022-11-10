@@ -10,24 +10,24 @@ namespace Redbridge.WebApiCore.Filters
 {
     public class ValidationExceptionFilterAttribute : ExceptionFilterAttribute
     {
-        readonly ILogger _logger;
+        private readonly ILogger _logger;
 
         public ValidationExceptionFilterAttribute(ILogger<ValidationExceptionFilterAttribute> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
-        
-        public override void OnException(ExceptionContext actionExecutedContext)
+
+        public override void OnException(ExceptionContext context)
         {
             // Convert ValidationResultsException results or a ValidationException into ValidationResults
             _logger.LogInformation("Checking exception for validation exception filtering....");
 
-            if (actionExecutedContext.Exception is ValidationResultsException ||
-                actionExecutedContext.Exception is ValidationException)
+            if (context.Exception is ValidationResultsException ||
+                context.Exception is ValidationException)
             {
                 ValidationResult[] results = Array.Empty<ValidationResult>();
 
-                if (actionExecutedContext.Exception is ValidationResultsException validationResultsException)
+                if (context.Exception is ValidationResultsException validationResultsException)
                 {
                     _logger.LogInformation(
                         "Validation exception filtering being applied to a multi-results exception...");
@@ -35,7 +35,7 @@ namespace Redbridge.WebApiCore.Filters
                         ? validationResultsException.Results.Results.ToArray()
                         : new[] { new ValidationResult(false, validationResultsException.Message) };
                 }
-                else if (actionExecutedContext.Exception is ValidationException validationException)
+                else if (context.Exception is ValidationException validationException)
                 {
                     _logger.LogInformation(
                         "Validation exception filtering being applied to a single result validation exception...");
@@ -48,10 +48,9 @@ namespace Redbridge.WebApiCore.Filters
                     ContractResolver = new CamelCasePropertyNamesContractResolver()
                 });
 
-                actionExecutedContext.Result = new JsonResult(rawJson) { StatusCode = 422 };
-                actionExecutedContext.ExceptionHandled = true;
+                context.Result = new JsonResult(rawJson) { StatusCode = 422 };
+                context.ExceptionHandled = true;
             }
         }
-
     }
 }
