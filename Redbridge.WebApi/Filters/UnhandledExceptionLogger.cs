@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.ExceptionHandling;
+using System.Web.Http.Filters;
 using Redbridge.Diagnostics;
 
 namespace Redbridge.WebApi.Filters

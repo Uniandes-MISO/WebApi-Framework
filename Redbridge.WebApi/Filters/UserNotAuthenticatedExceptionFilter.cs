@@ -6,11 +6,11 @@ using Redbridge.Exceptions;
 
 namespace Redbridge.WebApi.Filters
 {
-    public class UserNotAuthenticatedExceptionFilter : ExceptionFilterAttribute
+    public class UserNotAuthenticatedExceptionFilterAttribute : ExceptionFilterAttribute
     {
         private readonly ILogger _logger;
 
-        public UserNotAuthenticatedExceptionFilter(ILogger logger)
+        public UserNotAuthenticatedExceptionFilterAttribute(ILogger logger)
         {
             if (logger == null) throw new System.ArgumentNullException(nameof(logger));
             _logger = logger;
