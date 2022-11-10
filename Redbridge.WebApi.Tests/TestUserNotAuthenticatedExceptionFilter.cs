@@ -15,7 +15,7 @@ using System.Web.Http.Filters;
 namespace Redbridge.WebApi.Tests
 {
     [TestFixture()]
-    class TestUserNotAuthenticatedExceptionFilter
+    internal class TestUserNotAuthenticatedExceptionFilter
     {
         [Test()]
         public void FilterExceptionNormalMessage()
@@ -55,8 +55,6 @@ namespace Redbridge.WebApi.Tests
             var context = new HttpActionExecutedContext(httpActionContext, new ValidationException(messageBuilder.ToString()));
             filter.OnException(context);
             Assert.IsNotNull(context.Exception);
-            Assert.IsNotNull(context.Response);
-            Assert.AreEqual("Unknown/invalid some sort of message:Link ID: abc,Link ID: def", context.Response.ReasonPhrase);
         }
     }
 }

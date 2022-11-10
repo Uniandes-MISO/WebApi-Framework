@@ -7,12 +7,13 @@ using System;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http.Controllers;
+using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Filters;
 
 namespace Redbridge.WebApi.Tests
 {
     [TestFixture()]
-    class TestUnhandledExceptionLogger
+    internal class TestUnhandledExceptionLogger
     {
         [Test()]
         public void UnhandledExceptionLoggerMessage()
@@ -27,8 +28,8 @@ namespace Redbridge.WebApi.Tests
                 }
             };
 
-            var context = new HttpActionExecutedContext(httpActionContext, new Exception("Some sort of message"));
-            filter.OnException(context);
+            var context = new ExceptionLoggerContext(new ExceptionContext(new Exception(), new ExceptionContextCatchBlock("", false, false)));
+            filter.LogAsync(context, new System.Threading.CancellationToken());
             Assert.IsNotNull(context.Exception);
         }
 

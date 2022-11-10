@@ -25,10 +25,5 @@ namespace Redbridge.WebApi.Filters
 
             return Task.CompletedTask;
         }
-
-        public void OnException(HttpActionExecutedContext context)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
