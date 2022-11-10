@@ -1,7 +1,7 @@
-﻿using System;
-using Owin;
+﻿using Owin;
 using Redbridge.Web;
 using Redbridge.Web.Messaging;
+using System;
 
 namespace Redbridge.WebApi
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Redbridge.ApiManagement;
+using System;
 using System.Web.Http;
-using Redbridge.ApiManagement;
 
 namespace Redbridge.WebApi.Controllers
 {

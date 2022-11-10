@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Redbridge.WebApi.Handlers;
 using System.Web.Http;
 using System.Web.Http.Batch;
-using Redbridge.WebApi.Handlers;
 
 namespace Redbridge.WebApi.Configuration
 {

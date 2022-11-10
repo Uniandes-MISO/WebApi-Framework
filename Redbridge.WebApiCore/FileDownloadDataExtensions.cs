@@ -1,8 +1,8 @@
-﻿using System.IO.Compression;
+﻿using Redbridge.Data;
+using Redbridge.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.Http.Headers;
-using Redbridge.Data;
-using Redbridge.IO;
 
 namespace Redbridge.WebApiCore
 {
@@ -43,7 +43,7 @@ namespace Redbridge.WebApiCore
             }
         }
 
-        private static HttpResponseMessage ZipContentResult( byte[] archiveFile, string filename)
+        private static HttpResponseMessage ZipContentResult(byte[] archiveFile, string filename)
         {
             var pushStreamContent = new PushStreamContent((stream, content, context) =>
             {

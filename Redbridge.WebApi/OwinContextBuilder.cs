@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
+using System.Collections.Generic;
 
 namespace Redbridge.WebApi
 {

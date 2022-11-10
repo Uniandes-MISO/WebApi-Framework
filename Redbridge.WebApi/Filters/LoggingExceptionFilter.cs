@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Redbridge.Diagnostics;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
-using Redbridge.Diagnostics;
 
 namespace Redbridge.WebApi.Filters
 {

@@ -1,7 +1,4 @@
-﻿using System.Net.Http;
-using System.Web.Http.Controllers;
-using System.Web.Http.Filters;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using Redbridge.Data;
 using Redbridge.Diagnostics;
@@ -9,6 +6,9 @@ using Redbridge.Exceptions;
 using Redbridge.Threading;
 using Redbridge.Web.Messaging;
 using Redbridge.WebApi.Filters;
+using System.Net.Http;
+using System.Web.Http.Controllers;
+using System.Web.Http.Filters;
 
 namespace Redbridge.WebApi.Tests
 {
@@ -17,7 +17,9 @@ namespace Redbridge.WebApi.Tests
     {
         public class UnknownItemException : UnknownEntityException
         {
-            public UnknownItemException(string message) : base(message) { }
+            public UnknownItemException(string message) : base(message)
+            {
+            }
 
             public override string EntityType => "My tester";
         }

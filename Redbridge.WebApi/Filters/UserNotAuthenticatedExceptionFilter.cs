@@ -1,8 +1,8 @@
-﻿using System.Net;
+﻿using Redbridge.Diagnostics;
+using Redbridge.Exceptions;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
-using Redbridge.Diagnostics;
-using Redbridge.Exceptions;
 
 namespace Redbridge.WebApi.Filters
 {

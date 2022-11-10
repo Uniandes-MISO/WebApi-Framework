@@ -1,9 +1,9 @@
-﻿using System;
-using System.Web.Http;
-using System.Web.Http.ExceptionHandling;
-using Redbridge.Diagnostics;
+﻿using Redbridge.Diagnostics;
 using Redbridge.WebApi.Filters;
 using Redbridge.WebApi.Handlers;
+using System;
+using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 
 namespace Redbridge.WebApi.Configuration
 {

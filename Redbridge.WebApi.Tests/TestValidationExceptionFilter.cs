@@ -1,15 +1,15 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Redbridge.Diagnostics;
+using Redbridge.Exceptions;
+using Redbridge.Threading;
 using Redbridge.Validation;
+using Redbridge.Web.Messaging;
+using Redbridge.WebApi.Filters;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-using Redbridge.Exceptions;
-using Redbridge.Threading;
-using Redbridge.Web.Messaging;
-using Redbridge.WebApi.Filters;
 
 namespace Redbridge.WebApi.Tests
 {
@@ -49,7 +49,6 @@ namespace Redbridge.WebApi.Tests
                 Assert.AreEqual("Something went wrong.", ve.Message);
             }
         }
-
 
         [Test()]
         public void FilterValidationExceptionMultiTypeViewValidateBodyJson()

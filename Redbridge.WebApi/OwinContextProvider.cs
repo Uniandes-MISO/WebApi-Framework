@@ -1,5 +1,5 @@
-﻿using System.Web;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
+using System.Web;
 
 namespace Redbridge.WebApi
 {

@@ -1,13 +1,13 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Redbridge.Diagnostics;
+using Redbridge.Exceptions;
+using Redbridge.WebApi.Filters;
 using System;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
-using Redbridge.Exceptions;
-using Redbridge.WebApi.Filters;
 
 namespace Redbridge.WebApi.Tests
 {

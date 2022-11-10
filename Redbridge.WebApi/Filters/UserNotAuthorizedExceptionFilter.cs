@@ -1,14 +1,14 @@
-﻿using System.Net;
+﻿using Redbridge.Diagnostics;
+using Redbridge.Exceptions;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http.Filters;
-using Redbridge.Diagnostics;
-using Redbridge.Exceptions;
 
 namespace Redbridge.WebApi.Filters
 {
     public class UserNotAuthorizedExceptionFilterAttribute : ExceptionFilterAttribute
     {
-        readonly ILogger _logger;
+        private readonly ILogger _logger;
 
         public UserNotAuthorizedExceptionFilterAttribute(ILogger logger)
         {

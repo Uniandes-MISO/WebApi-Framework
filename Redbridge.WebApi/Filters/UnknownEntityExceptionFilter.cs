@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Redbridge.Data;
+using Redbridge.Diagnostics;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Filters;
-using Redbridge.Data;
-using Redbridge.Diagnostics;
 
 namespace Redbridge.WebApi.Filters
 {

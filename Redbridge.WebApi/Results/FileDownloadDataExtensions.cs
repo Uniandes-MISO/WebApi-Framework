@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Ionic.Zip;
+using Redbridge.Data;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Ionic.Zip;
-using Redbridge.Data;
 
 namespace Redbridge.WebApi.Results
 {

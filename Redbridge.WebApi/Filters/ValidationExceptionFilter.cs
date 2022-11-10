@@ -1,20 +1,20 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Redbridge.Diagnostics;
+using Redbridge.Exceptions;
+using Redbridge.Validation;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http.Filters;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using Redbridge.Diagnostics;
-using Redbridge.Exceptions;
-using Redbridge.Validation;
 
 namespace Redbridge.WebApi.Filters
 {
     public class ValidationExceptionFilterAttribute : ExceptionFilterAttribute
     {
-        readonly ILogger _logger;
+        private readonly ILogger _logger;
 
         public ValidationExceptionFilterAttribute(ILogger logger)
         {
@@ -30,7 +30,7 @@ namespace Redbridge.WebApi.Filters
             ValidationResult[] results;
             var validationResultsException = actionExecutedContext.Exception as ValidationResultsException;
             var validationException = actionExecutedContext.Exception as ValidationException;
-            string reasonPhrase = "No reason supplied.";
+            string reasonPhrase;
 
             if (validationResultsException != null)
             {
@@ -41,7 +41,6 @@ namespace Redbridge.WebApi.Filters
                     results = new[] { new ValidationResult(false, validationResultsException.Message) };
 
                 reasonPhrase = validationResultsException.Message;
-
             }
             else if (validationException != null)
             {
@@ -71,6 +70,5 @@ namespace Redbridge.WebApi.Filters
 
             actionExecutedContext.Exception = null;
         }
-
     }
 }
