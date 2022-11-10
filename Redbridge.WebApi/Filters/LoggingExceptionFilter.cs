@@ -7,11 +7,11 @@ using Redbridge.Diagnostics;
 
 namespace Redbridge.WebApi.Filters
 {
-    public class LoggingExceptionFilter : ExceptionFilterAttribute
+    public class LoggingExceptionFilterAttribute : ExceptionFilterAttribute
     {
         private readonly ILogger _logger;
 
-        public LoggingExceptionFilter(ILogger logger)
+        public LoggingExceptionFilterAttribute(ILogger logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
@@ -20,7 +20,7 @@ namespace Redbridge.WebApi.Filters
         {
             if (actionExecutedContext.Exception != null)
             {
-                _logger.WriteInfo($"Logging that an exception has occurred in LoggingExceptionFilter: {actionExecutedContext.Exception.Message}...");
+                _logger.WriteInfo($"Logging that an exception has occurred in LoggingExceptionFilterAttribute: {actionExecutedContext.Exception.Message}...");
                 var messagePhrase = actionExecutedContext.Exception.Message ?? "Internal server error - no additional detail supplied";
                 messagePhrase = string.Join(",", messagePhrase.Split(new[] { Environment.NewLine }, StringSplitOptions.None).Where(s => !string.IsNullOrWhiteSpace(s))); // Carriage returns are not permitted in reason phrases.
 
